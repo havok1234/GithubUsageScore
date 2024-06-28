@@ -3,6 +3,7 @@
 #TODO: Add Validation for correct user value
 #TODO: Add Logging
 #TODO: Add requirements.txt
+#TODO: Add Testing framework
 
 import requests
 import sys
