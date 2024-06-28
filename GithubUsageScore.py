@@ -1,8 +1,8 @@
 # This code checks the Github Usage stats and generates a usage score.
-# Scoring criteria: []
-# https://api.github.com/users/josevalim/events
+# Scoring criteria: {"PullRequestEvent": 5, "PushEvent": 4, "IssueCommentEvent": 3, "CreateEvent": 2, "Other": 1}
 #TODO: Add Validation for correct user value
 #TODO: Add Logging
+#TODO: Add requirements.txt
 
 import requests
 import sys
