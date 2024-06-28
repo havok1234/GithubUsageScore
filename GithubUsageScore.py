@@ -14,6 +14,10 @@ class GithubUsageScore:
     baseUrl = "https://api.github.com/users/"
     scores = []
 
+    def __init__(self):
+        # Test calculate function
+        self.testCalculateScore()
+        
     # Read user(s) from input.txt
     def getUsers(self):
         try:
@@ -45,8 +49,7 @@ class GithubUsageScore:
         return events
             
     # Calculate github usage score for a user by fetching their events
-    def calculateScore(self, user):
-        events = self.getEvents(user)
+    def calculateScore(self, user, events):
         score = 0
         #iterate over events to calculate score
         for event in events:
@@ -68,12 +71,20 @@ class GithubUsageScore:
             
         # Calculate Score for each user
         for user in users:
-            if user.strip():
-                self.calculateScore(user.strip())
+            user = user.strip()
+            if user:
+                events = self.getEvents(user)
+                self.calculateScore(user, events)
         
         # Print Score(s)
         self.printScores()
-        
+    
+    # Testcase to validate accuracy of Calculations
+    def testCalculateScore(self):
+        events = ['PushEvent', 'PushEvent', 'PushEvent', 'PushEvent', 'CreateEvent', 'CreateEvent']
+        self.calculateScore("Test", events)
+        assert self.scores[0] == "Test's github usage score is 20"
+        self.scores = []
     
 def main():
     g = GithubUsageScore()
